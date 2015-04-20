@@ -10,6 +10,15 @@ Given a string S, find the longest palindromic substring in S. You may assume th
 还是需要用二维数组记录回文的区间。
 
 f[i,j]=true表示i-j是回文。则 f[i,j]=true if (i+1==j and s[i]==s[j]) or (f[i+1][j-1] and s[i]==s[j]). 时间复杂度O(n^2)
+
+[注]：第36行，如果写f=[[False]*l]*l，然后for i in range(l): f[i][i]=True，则会全部变成True！
+算法对了，但是当len(s)=1000的时候还是超时。。
+
+看了一些其他解答方法====
+
+* 枚举对称轴，分别向两边检验。O(n^2)。
+
+* s的逆序s'，转换为求s和s'的最长公共子串，且子串位置需保持一致。
 '''
 
 import unittest
