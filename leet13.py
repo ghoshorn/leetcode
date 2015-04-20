@@ -1,3 +1,4 @@
+# encoding: utf8
 '''
 Roman to Integer
 Given a roman numeral, convert it to an integer.

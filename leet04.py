@@ -1,3 +1,4 @@
+# encoding: utf8
 '''
 Median of Two Sorted Arrays
 

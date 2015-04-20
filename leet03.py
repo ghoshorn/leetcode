@@ -1,3 +1,4 @@
+# encoding: utf8
 '''
 Longest Substring Without Repeating Characters
 

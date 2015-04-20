@@ -1,3 +1,4 @@
+# encoding: utf8
 '''
 Divide Two Integers  
 Divide two integers without using multiplication, division and mod operator.

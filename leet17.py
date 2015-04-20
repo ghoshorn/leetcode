@@ -1,3 +1,4 @@
+# encoding: utf8
 '''
 Letter Combinations of a Phone Number
 Given a digit string, return all possible letter combinations that the number could represent.

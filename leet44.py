@@ -1,3 +1,4 @@
+# encoding: utf8
 '''
 Wildcard Matching
 Implement wildcard pattern matching with support for '?' and '*'.

@@ -1,3 +1,4 @@
+# encoding: utf8
 '''
 Reverse digits of an integer.
 
