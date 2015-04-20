@@ -1,3 +1,13 @@
+'''
+Valid Parentheses
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
+
+模拟入栈出栈即可。
+需要注意，出栈的时候需判断是否为空。
+'''
+
 import unittest
 
 class Solution:

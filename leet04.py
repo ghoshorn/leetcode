@@ -1,3 +1,18 @@
+'''
+Median of Two Sorted Arrays
+
+There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+最初想法是，设置ia,ja,ib,jb四个指针分别指向A和B的头和尾，首先检查 是否某个数组全部大于另一个数组，可直接计算返回；否则，每次比较头部两个数字并将小的后移，比较尾部两个并将大的前移，指导头尾相遇。不过发现其中需要太多的判断，代码超过70行还是不能把所有情况都考虑到。。。
+
+
+
+然后换做，找到第k和k+1大的数（如果一共2n+1个数，找到第k个就可以；如果一共2n个，则需要找到k和k+1求平均），其中k就是中位数。
+
+考虑到len(A)+len(B)可能奇数或偶数，并且有时候需要同时找到第k+1个，因此取
+
+k=(len(A)+len(B)+1)/2+1。 比如如果一共5个数，k=(5+1)/2+1=4，即找到第3,4大的数；一共6个数，k=(6+1)/2+1=4，即找到第3,4大的数。
+'''
+
 import unittest
 from pprint import pprint
 import pdb

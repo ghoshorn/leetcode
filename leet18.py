@@ -1,3 +1,23 @@
+'''
+4Sum
+Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
+
+Note:
+Elements in a quadruplet (a,b,c,d) must be in non-descending order. (ie, a ≤ b ≤ c ≤ d)
+The solution set must not contain duplicate quadruplets.
+    For example, given array S = {1 0 -1 0 -2 2}, and target = 0.
+
+    A solution set is:
+    (-1,  0, 0, 1)
+    (-2, -1, 1, 2)
+    (-2,  0, 0, 2)
+
+类似于leetcode 15 3sum。采用类似的思路，O(n^3)，超时。。
+
+在此基础上优化：
+增加一个字典缓存exist={}，把每两个数的和都加入字典；如果target-a[i]-a[j]不在字典中，则不必继续查找。时间复杂度平均降到O(n^2)
+'''
+
 import unittest
 from pprint import pprint
 import pdb

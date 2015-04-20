@@ -1,3 +1,13 @@
+'''
+Merge k Sorted Lists
+Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+可以通过leetcode 21的merge Two Lists来解决。
+
+如果从头到尾依此合并，会超时。
+
+改用分治法来调用。链表个数l>3时，mergeTwoLists(self.mergeKLists(lists[:l/2]),self.mergeKLists(lists[l/2:l]))
+'''
+
 import unittest
 
 # Definition for singly-linked list.

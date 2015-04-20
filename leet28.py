@@ -1,3 +1,12 @@
+'''
+Implement strStr()
+Implement strStr().
+
+Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+要注意特殊情况，比如strstr("","") 应该等于0 =_=
+'''
+
 import unittest
 from pprint import pprint
 import pdb

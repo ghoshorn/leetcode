@@ -1,3 +1,21 @@
+'''
+Longest Substring Without Repeating Characters
+
+Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for "abcabcbb" is "abc", which the length is 3. For "bbbbb" the longest substring is "b", with the length of 1.
+用s表示该字符串。直接来硬的，简单粗暴，超时。。
+
+那就用DP吧
+
+a[*][i]表示s中前i个里出现*的次数，b[i]表示从s[i]往前（包括s[i]）的最长无重复字母子串。那么
+
+b[i]=b[i-1]+1, if （之前没出现过s[i]）   a[s[i],i-1]==0  or （之前的b[i-1]里没有出现过s[i]） a[s[i],i-1]==a[s[i],i-1-b[i-1]]；
+
+否则，b[i]=b[i]=i-j 其中j是上一次出现s[i]的位置。
+
+虽然过了，但是按时间排名有点靠后呢，，再改进一下吧：不要数组a了，使用字典记录每个字母上一次出现的位置
+从338 ms 降低到97 ms
+'''
+
 import unittest
 from pprint import pprint
 import pdb

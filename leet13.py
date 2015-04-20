@@ -1,3 +1,12 @@
+'''
+Roman to Integer
+Given a roman numeral, convert it to an integer.
+
+Input is guaranteed to be within the range from 1 to 3999.
+
+从字符串中每次处理一位，处理前需要先找到剩余串的枢纽（剩余串中最大的），以判断当前值在其左边还是右边，该相加还是相减。
+'''
+
 import unittest
 from pprint import pprint
 import pdb

@@ -1,3 +1,16 @@
+'''
+Divide Two Integers  
+Divide two integers without using multiplication, division and mod operator.
+
+If it is overflow, return MAX_INT.
+
+Solution1:当divide(-2147483648, -1)，超时。
+可以让除数每次翻倍，不够减时每次再折半，运算次数就会在log(MAX_INT)*2=62次之内了。
+
+由于不能使用除法，每次翻倍都要记录翻倍前的数字。
+为了应对“If it is overflow, return MAX_INT.”，还需要加上ans与MAX_INT的比较
+'''
+
 import unittest
 from pprint import pprint
 import pdb

@@ -1,3 +1,31 @@
+'''
+ZigZag Conversion
+
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+P   A   H   N
+A P L S I I G
+Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+Write the code that will take a string and make this conversion given a number of rows:
+
+string convert(string text, int nRows);
+convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR"
+比如nRows=4
+
+0        6            12
+1    5   7       11   13
+2 4      8   10       14
+3        9            15
+
+第一行间隔是 (nRows-1)*2=(4-1)*2=6
+
+之后的间隔是 
+4,2
+2,4
+6,0
+'''
+
 import unittest
 from pprint import pprint
 import pdb

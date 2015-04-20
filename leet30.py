@@ -1,3 +1,33 @@
+'''
+Substring with Concatenation of All Words
+You are given a string, S, and a list of words, L, that are all of the same length. Find all starting indices of substring(s) in S that is a concatenation of each word in L exactly once and without any intervening characters.
+
+For example, given:
+S: "barfoothefoobarman"
+L: ["foo", "bar"]
+
+You should return the indices: [0,9].
+(order does not matter).
+
+L中的每个单词长度都相等，这句话很奇怪。从这个单词长度入手，每次从S中取出一个单词长度，检查L中是否存在，存在就删除，直至L为空，就可以判断。当然，每次L需要deepcopy使用。
+每次deepcopy，当S太长时比如7000个时会超时，因此加入needcopy判断：只有从中删除过才需要重新copy。时间从1.9s降到0.1s。
+
+当S="a'*5000, L=["a" * 5001]时，超时。加上条件len(L)>len(S) or len(L)*len(L[0])>len(S)即可通过。
+但是S="ab"*5000, L=["ab","ba"]*250时，仍然超时。。本地运行需要2s+
+
+优化还得从S入手。比如abababab...，每次判断的的子串都是abab...，因此可以加入一个字典hasProcessed={}，重复的子串就不需要每次判断了。
+toProcess=S[start:start+ll]  
+if toProcess in hasProcessed:  
+    continue 
+并在没匹配成功时
+hasProcessed[toProcess]=True
+
+本机上0.27s即通过。 但是提交的时候： Memory Limit Exceeded -_-|||...
+把字典换为列表，可以节省内存，但是速度大大降低。。
+好吧，，再修改一下，把toProcess先hash()一下，再存到字典里，就不会超内存了。
+
+'''
+
 import unittest
 from pprint import pprint
 import pdb

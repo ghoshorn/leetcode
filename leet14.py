@@ -1,3 +1,9 @@
+'''
+Longest Common Prefix
+Write a function to find the longest common prefix string amongst an array of strings.
+需要注意的特殊情况：输入是个空列表
+'''
+
 import unittest
 from pprint import pprint
 import pdb

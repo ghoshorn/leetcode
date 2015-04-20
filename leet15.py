@@ -1,3 +1,21 @@
+'''
+3Sum
+Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Note:
+Elements in a triplet (a,b,c) must be in non-descending order. (ie, a ≤ b ≤ c)
+The solution set must not contain duplicate triplets.
+    For example, given array S = {-1 0 1 2 -1 -4},
+
+    A solution set is:
+    (-1, 0, 1)
+    (-1, -1, 2)
+
+复杂度O(n*n*log(n))，超时(⊙o⊙) 
+这种题的复杂度不能比O(n*n)更小了吧？ 超时的话，感觉应该是加入列表并判重比较耗费时间。换一种判重思路可通过
+需要注意，不能写为if j<l-1 and a[j]==a[j+1]，否则[0,0,0]这种情况将得不到解。
+'''
+
 import unittest
 from pprint import pprint
 import pdb
