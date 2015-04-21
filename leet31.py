@@ -11,6 +11,22 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 1,2,3 → 1,3,2
 3,2,1 → 1,2,3
 1,1,5 → 1,5,1
+
+算法分三个步骤：
+
+一般而言，设P是[1,n]的一个全排列。
+
+1.  P=P1P2…Pn=P1P2…Pj-1PjPj+1…Pk-1PkPk+1…Pn
+
+j=max{i|Pi<Pi+1},k=max{i|Pi>Pj}
+
+2.  对换Pj，Pk，将Pj+1…Pk-1PjPk+1…Pn翻转，
+
+3. P’= P1P2…Pj-1PkPn…Pk+1PjPk-1…Pj+1即P的下一个。
+
+[注意]：在函数中，如果对传入的参数num适用操作 num=num[:i]，则num会变为新申请的内存，不会修改原num的值
+    []运算开辟新空间进行操作!
+
 '''
 
 import unittest
@@ -22,33 +38,30 @@ class Solution:
     # @return nothing (void), do not return anything, modify num in-place instead.
     def nextPermutation(self, num):
         l=len(num)
-        for i in range(l-1,0,-1):
-            for j in range(i-1,-1,-1):
-                # print j,i
-                if num[j]<num[i]:
-                    break
-            if j==0 and i==1 and num[j]>=num[i]:
-                num.reverse()
-                return None
-            if num[j]<num[i]:
-                tmp=num[i:]
-                # num=num[:i]
-                print num
-                for k in range(l-i):
-                    num.pop()
-                    print num
-                tmp=tmp[::-1]
-                print j,'---',tmp
-                for x in tmp:
-                    num.insert(j,x)
-                    print num
-                tmp=num[j+1:]
-                tmp.sort()
-                for k in range(j+1,l):
-                    num[k]=tmp[k-j-1]
-                    print num
-                # print num
-                return None
+        j=-1
+        for i in range(0,l-1):
+            if num[i]<num[i+1]:
+                j=i
+        if j==-1:
+            num.reverse()
+            return None
+        for i in range(l-1,j,-1):
+            if num[i]>num[j]:
+                k=i
+                break
+        num[k],num[j]=num[j],num[k]
+        self.reverse(num,j+1,l-1)
+        return None
+
+    def reverse(self,s,start,end):
+        i=start
+        j=end
+        while i<j:
+            s[i],s[j]=s[j],s[i]
+            i+=1
+            j-=1
+        return None
+
 
 class testCase(unittest.TestCase):
     def setUp(self):
