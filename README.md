@@ -194,4 +194,3 @@ Contents
 198 House Robber    28.3%   Easy
 199 Binary Tree Right Side View 26.5%   Medium
 200 Number of Islands   20.9%   Medium
-201 Bitwise AND of Numbers Range    25.8%   Medium
