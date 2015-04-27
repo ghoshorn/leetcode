@@ -30,6 +30,12 @@ class Solution:
                     tmp.append(int(board[i][j]))
             a.append(tmp)
         self.dfs(a,0,0)
+        # pprint(self.aa)
+        for i in range(9):
+            board[i]=""
+            for j in range(9):
+                board[i]+=str(self.aa[i][j])
+        # pprint(board)
 
     def dfs(self, board,x,y):
         if self.isValidSudoku(board)==False:
@@ -38,22 +44,28 @@ class Solution:
         # pprint(board)
         # print x,y
         if x==9 and y==0:
-            pprint(board)
-            return
+            # pprint(board)
+            from copy import deepcopy
+            self.aa=deepcopy(board)
+            return 1
         if board[x][y]==0:
             for k in range(1,10):
                 # print "x:%d,y:%d  k->%d"%(x,y,k)
                 board[x][y]=k
                 if y==8:
-                    self.dfs(board,x+1,0)
+                    ret=self.dfs(board,x+1,0)
                 else:
-                    self.dfs(board,x,y+1)
+                    ret=self.dfs(board,x,y+1)
+                if ret:
+                    return 1
                 board[x][y]=0
         else:
             if y==8:
-                self.dfs(board,x+1,0)
+                ret=self.dfs(board,x+1,0)
             else:
-                self.dfs(board,x,y+1)
+                ret=self.dfs(board,x,y+1)
+            if ret:
+                return 1
 
     # @param board, a 9x9 2D array
     # @return a boolean
@@ -133,11 +145,14 @@ class testCase(unittest.TestCase):
         self.a=Solution()
 
     def testLeet(self):
-        self.assertEqual(self.a.solveSudoku(["53..7....","6..195...",".98....6.","8...6...3","4..8.3..1","7...2...6",".6....28.","...419..5","....8..79"]),True)
-
-
+        xx=["53..7....","6..195...",".98....6.","8...6...3","4..8.3..1","7...2...6",".6....28.","...419..5","....8..79"]
+        self.a.solveSudoku(xx)
+        self.assertEqual(xx,['534678912', '672195348', '198342567', '859761423', '426853791', '713924856', '961537284', '287419635', '345286179'])
 
 if __name__ == '__main__':
-    # unittest.main()
-    a=Solution()
-    a.solveSudoku(["53..7....","6..195...",".98....6.","8...6...3","4..8.3..1","7...2...6",".6....28.","...419..5","....8..79"])
+    unittest.main()
+    # a=Solution()
+    # xx=["53..7....","6..195...",".98....6.","8...6...3","4..8.3..1","7...2...6",".6....28.","...419..5","....8..79"]
+    # a.solveSudoku(xx)
+    # pprint(xx)
+
