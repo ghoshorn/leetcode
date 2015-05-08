@@ -23,6 +23,12 @@ Note: Given n will be between 1 and 9 inclusive.
 对于8, 35784这种数据，耗时0.087s，居然还是超时。。
 
 注定要用数学的方法了。。
+由（Solution2）中的n9=[0,1,40321,80641,120961,161281,201601,241921,282241,322561]，
+其中40321 =8!+1
+    80641 =8!*2+1
+    ...
+对应第一位即为k/(n-1)!
+第一位找到后，令k=k%(n-1)!，开始找第二位k/(n-2)!
 '''
 
 import unittest
@@ -130,18 +136,41 @@ class Solution2:
                     return True
                 self.valid[i]=True
 
+class Solution3:
+    # @param {integer} n
+    # @param {integer} k
+    # @return {string}
+    def getPermutation(self, n, k):
+        from math import factorial
+        ans=[0 for i in range(n)]
+        valid=[True for i in range(n+1)]
+        k-=1 #why?
+        for i in range(n):
+            kth=k/factorial(n-i-1)+1
+            cnt=0
+            for j in range(1,n+1):
+                if valid[j]:
+                    cnt+=1
+                    if cnt==kth:
+                        ans[i]=j
+                        valid[j]=False
+            k=k%factorial(n-i-1)
+        return ''.join(map(lambda x:str(x),ans))
+        
+
+
 class testCase(unittest.TestCase):
     def setUp(self):
         pass
-        self.a=Solution2()
+        self.a=Solution3()
 
     def testLeet(self):
         self.assertEqual(self.a.getPermutation(3,1),'123')
         self.assertEqual(self.a.getPermutation(3,3),'213')
         self.assertEqual(self.a.getPermutation(3,6),'321')
         self.assertEqual(self.a.getPermutation(8, 15025),'38721456')
-        # self.assertEqual(self.a.getPermutation(9, 322561),'912345678')
-        # self.assertEqual(self.a.getPermutation(9, 362880),'987654321')
+        self.assertEqual(self.a.getPermutation(9, 322561),'912345678')
+        self.assertEqual(self.a.getPermutation(9, 362880),'987654321')
         
 
 if __name__ == '__main__':
