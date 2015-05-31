@@ -7,6 +7,7 @@ Note:
 You may assume that duplicates do not exist in the tree.
 
 直接递归Memory Limit Exceeded (⊙o⊙)
+改用记录先序遍历和中序遍历的开始/结束下标。
 '''
 
 import unittest
@@ -52,11 +53,10 @@ class Solution:
         p1,p2=preorder
         i1,i2=inorder
         if not (0<=p1<=p2<self.l and 0<=i1<=i2<self.l):
-        # if p1>=self.l or p2>=self.l or i1>=self.l or i2>=self.l or i1<0 or i2<0 or p1<0 or p2<0:
             return None
         root=TreeNode(self.preorder[p1])
-        print preorder,inorder
-        print root.val
+        # print preorder,inorder
+        # print root.val
         if p1==p2 or i1==i2:
             return root
         cnt=0
@@ -64,11 +64,12 @@ class Solution:
             if self.inorder[pos]==root.val:
                 break
             cnt+=1
-        if cnt>0:
+        if cnt>0: # 左子树非空
             root.left=self.go([p1+1,p1+cnt],[i1,pos-1])
         # if pos<p2:
-        # if pos<i2:
-            root.right=self.go([p1+1+cnt,p1+cnt*2],[pos+1,i2])
+        if i2-i1-cnt>0: # 右子树非空
+            root.right=self.go([p1+cnt+1,p2],[pos+1,i2])
+            # root.right=self.go([p1+cnt+1,p1+cnt*2],[pos+1,i2])
         return root
 
 
