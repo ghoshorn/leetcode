@@ -55,13 +55,13 @@ class Solution: # patition in qsort
 
     def patition(self, nums, left, right):
         pivot=nums[right]
-        i=left-1
+        i=left
         for j in range(left,right):
             if nums[j]<=pivot:
-                i+=1
                 nums[i],nums[j]=nums[j],nums[i]
-        nums[i+1],nums[right]=nums[right],nums[i+1]
-        return i+1
+                i+=1
+        nums[i],nums[right]=nums[right],nums[i]
+        return i
 
     # def patition(self, nums, left, right): # wrong
     #     l=len(nums)
