@@ -6,6 +6,10 @@ Given an array of size n, find the majority element. The majority element is the
 You may assume that the array is non-empty and the majority element always exist in the array.
 
 使用数组记录每一位中出现1的次数（二进制）
+
+其他思路（from剑指offer P163）
+* 基于Patition的方法
+* 根据数组特点，从第一个数开始，记录数字和该数字出现的次数。如果相同次数+1，不同则次数-1.由于有超过一半是相同的数字，因此最后肯定留下要找的数字.
 '''
 
 import unittest
