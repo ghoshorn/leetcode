@@ -19,6 +19,10 @@ Note: The result may be very large, so you need to return a string instead of an
 如果不一样长，是不是短的就是应该大呢？
 （最开始这么认为的，例如3>30，但是显然不对！例如8308>830）
 而是应该循环比较！
+
+另一种比较方法（from剑指offer）
+例如数字a,b
+直接比较ab?ba的大小即可（转换为字符串比较即可）
 '''
 
 import unittest
