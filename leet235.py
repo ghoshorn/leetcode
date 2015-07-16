@@ -36,6 +36,19 @@ class TreeNode:
         self.left = None
         self.right = None
 
+class Solution1:
+    # @param {TreeNode} root
+    # @param {TreeNode} p
+    # @param {TreeNode} q
+    # @return {TreeNode}
+    def lowestCommonAncestor(self, root, p, q):
+        if p<root.val and q<root.val:
+            return self.lowestCommonAncestor(root.left, p, q)
+        elif p>root.val and q>root.val:
+            return self.lowestCommonAncestor(root.right, p, q)
+        else:
+            return root.val
+
 class Solution:
     # @param {TreeNode} root
     # @param {TreeNode} p
