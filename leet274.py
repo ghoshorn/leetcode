@@ -17,6 +17,35 @@ A faster approach is to use extra space.
 
 升序排序后，如果某个值大于等于他（包含）之后的元素个数，则这个元素个数肯定是一个hindex。
 从前向后找到最大的一个即可。
+时间复杂度为O(nlogn)
+
+一种使用辅助空间O(n),时间O(n)的算法
+https://leetcode.com/discuss/55952/my-o-n-time-solution-use-java
+public int hIndex(int[] citations) {
+        int length = citations.length;
+        if (length == 0) {
+            return 0;
+        }
+
+        int[] array2 = new int[length + 1];
+        for (int i = 0; i < length; i++) {
+            if (citations[i] > length) {
+                array2[length] += 1;
+            } else {
+                array2[citations[i]] += 1;
+            }
+        }
+        int t = 0;
+        int result = 0;
+
+        for (int i = length; i >= 0; i--) {
+            t = t + array2[i];
+            if (t >= i) {
+                return i;
+            }
+        }
+        return 0;
+    }
 '''
 
 import unittest
